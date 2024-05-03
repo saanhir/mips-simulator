@@ -52,12 +52,24 @@ defmodule Mips do
 
   end
 
-  # def flow(instrs, size, regs) do
+  def flow(instrs, size, regs) do
 
-  #   #exec regs, 0
+    run = fn
+      regs, ix, _ when ix >= size -> regs
+      regs, ix, run -> case elem(instrs, ix) do
+        [:add, dst, src, trg]   -> run.(%{regs | dst=> regs[src]+regs[trg]}, ix+1, run)
+        [:addi, trg, src, imm]  -> run.(%{regs | trg=> regs[src]+imm}, ix+1, run)
+        [:li, trg, imm]         -> run.(%{regs | trg=> imm}, ix+1, run)
+        [:bne, trg, src, imm]   -> if regs[trg] != regs[src], do: run.(regs, imm, run), else: run.(regs, ix+1, run)
+        _ -> "Instruction Error"
+      end
+      _, _, _ -> "Run error"
+    end
+
+    run.(regs, 0, run)
 
 
-  # end
+  end
 
   def exec(regs, instrs, size, index) do
     # base case
