@@ -11,24 +11,36 @@ defmodule Util do
 
   end
 
+  # def parse_symbol(symbol) do
+  #   case Integer.parse symbol do
+  #     {int, ""} -> int
+  #     {int, str} -> {(String.slice(str, 1, 2) |> String.to_atom), int}
+  #     :error -> String.replace(str, "$", ) |> String.to_atom
+  #   end
+  # end
+
   def parse_symbol(symbol) do
     case Integer.parse symbol do
-      {int, _} -> int
+      {int, ""} -> int
+      {int, str} -> {(String.slice(str, 1, 2) |> String.to_atom), int}
       :error -> String.to_atom(symbol)
     end
   end
 
   def zero_regs do
-    %{s0: 0, s1: 0, s2: 0, s3: 0}
+    %{zero: 0, at: 0, s0: 0, s1: 0, s2: 0, s3: 0, t0: 0, t1: 0}
   end
 
   def zero_mem do
     %{}
   end
 
-  def print_regs(r) do
-    IO.puts("=========STATE===========")
+  def print_state({r, m}) do
+    IO.puts("=========REGISTERS===========")
     Enum.reduce(r, "", fn {k,v}, acc -> acc <> "$ #{k} --- #{v}\n" end)
+    |> IO.puts
+    IO.puts("=========MEMORY===========")
+    Enum.reduce(m, "", fn {k,v}, acc -> acc <> "x #{k} --- #{v}\n" end)
     |> IO.puts
   end
 
