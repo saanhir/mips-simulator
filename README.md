@@ -1,21 +1,10 @@
-# Mips
+# Mips Simulator
 
-**TODO: Add description**
+Provides a command-line interface simulator of the MIPS assembly language in stateless, functional Elixir.
+To use, make sure you have Elixir and Mix installed, then navigate into the mips directory and run `iex -S mix` to compile and open the project with the iex shell.
+See example `infile.txt`.
+Parse a file with `Util.parse_file`, then pass into `Mips.run_instructions`.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `mips` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:mips, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/mips>.
-
+Later
