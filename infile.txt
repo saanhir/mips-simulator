@@ -1,5 +1,0 @@
-li s1, 5
-li s2, 1
-addi s1, s1, -1
-addi s2, s2, 1
-bne s1, s2, 2
