@@ -3,8 +3,8 @@ defmodule CLI do
 
   def main(args) do
     case args do
-      #[filename] -> IO.puts("printin: " <> filename)
-      [filename] -> parse_file(filename) |> Mips.run_instructions(zero_state()) |> print_state
+      [instr_file] -> parse_file(instr_file) |> Mips.run_instructions(zero_state()) |> print_state
+      [instr_file, init_file] -> parse_file(instr_file) |> Mips.run_instructions(parse_init(init_file)) |> print_state
       _ -> IO.puts("Format: ./exe <filename>")
     end
   end

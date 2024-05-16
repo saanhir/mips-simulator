@@ -29,6 +29,6 @@ defmodule Mips.MixProject do
   end
 
   def escript do
-    [main_module: CLI]
+    [main_module: CLI, name: "exe"]
   end
 end
