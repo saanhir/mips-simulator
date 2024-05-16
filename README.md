@@ -10,7 +10,7 @@ There are two ways to use this simulator: 1) with the `iex` shell, or 2) with th
 In the iex shell, specify starting register and memory maps, or use `Util.zero_state` for empty maps.
 Run your program file with `Util.parse_file("<filename>") |> Mips.run_instructions(Util.zero_state) |> Util.print_state`.
 
-2. Use the CLI executable `exe`, providing the MIPS instructions file name as the only argument: `./exe <filename> [initial file name]`. The initial file is optional, and is used for populating the registers and memory before the program is executed. If no initial state file is passed, all registers are assigned zeroes, and memory is empty.
+2. Use the CLI executable `exe`, providing the MIPS instructions file name as the only argument: `./exe <instructions file> [initial file]`. The initial state file is optional, and is used for populating the registers and memory before the program is executed. If no initial state file is passed, all registers are assigned zeroes, and memory is empty.
 
 ## Examples
 1. `example1.txt` is a MIPS program that loads 5 into `s1` and 1 into `s2`, then runs a loop decrementing `s1` and incrementing `s2` until they are equal.
