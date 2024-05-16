@@ -13,7 +13,7 @@ Run your program file with `Util.parse_file("<filename>") |> Mips.run_instructio
 2. Use the CLI executable `exe`, providing the MIPS instructions file name as the only argument: `./exe <filename>`. Note that presently this method always starts with a zero state.
 
 ## Examples
-1. `example1.txt` is a MIPS program that loads 1 into s1 and 5 into s2, then runs a loop decrementing s1 and incrementing s2 until they are equal.
+1. `example1.txt` is a MIPS program that loads 5 into `s1` and 1 into `s2`, then runs a loop decrementing `s1` and incrementing `s2` until they are equal.
 2. `example2.txt` provides a program that adds 5 to each element of a memory-contiguous array with its base address stored at `s0` and its size at `s1`.
 
 ## Notes
