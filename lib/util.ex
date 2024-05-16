@@ -8,8 +8,9 @@ defmodule Util do
     |> Enum.map(fn str -> String.split(str) end)  # split by symbol
     |> then(fn total -> (for line <- total, do: Enum.map(line, fn sym -> parse_symbol(sym) end)) end) # parse instruction symbols
     |> List.to_tuple()
-
+    |> then(fn tup -> {tup, tuple_size(tup)} end)
   end
+
 
   # def parse_symbol(symbol) do
   #   case Integer.parse symbol do
@@ -28,11 +29,15 @@ defmodule Util do
   end
 
   def zero_regs do
-    %{zero: 0, at: 0, s0: 0, s1: 0, s2: 0, s3: 0, t0: 0, t1: 0}
+    %{zero: 0, at: 0, s0: 0, s1: 0, s2: 0, s3: 0, t0: 0, t1: 0, t2: 0, t3: 0}
   end
 
   def zero_mem do
     %{}
+  end
+
+  def zero_state do
+    {zero_regs(), zero_mem()}
   end
 
   def print_state({r, m}) do

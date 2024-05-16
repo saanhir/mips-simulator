@@ -6,7 +6,7 @@ defmodule Mips do
   @doc """
   Runs given formatted instructions. Returns final register map.
   """
-  def run_instructions(instrs, size, {regs, mem}) do
+  def run_instructions({instrs, size}, {regs, mem}) do
     # recursive anonymous closure
     exec = fn
       {regs, mem}, index, _ when index >= size -> {regs, mem}   # reached end of instructions -> return register & memory maps
