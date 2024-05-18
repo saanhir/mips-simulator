@@ -1,4 +1,7 @@
 defmodule Util do
+  @moduledoc """
+  Utilities module; contains parsing & init functions.
+  """
 
   def parse_file(filename) do
     File.read(filename)
@@ -20,6 +23,9 @@ defmodule Util do
     end
   end
 
+  @doc """
+  Parse the initial state file into reg/mem.
+  """
   def parse_init(filename) do
     File.read(filename)
     |> elem(1) # get 1st element of tuple
@@ -37,7 +43,6 @@ defmodule Util do
 
     end)
   end
-
 
 
   def zero_regs do

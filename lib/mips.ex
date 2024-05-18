@@ -1,13 +1,13 @@
 defmodule Mips do
   @moduledoc """
-  Main multi-instruction execution module
+  Main multi-instruction execution module.
   """
 
   @doc """
-  Runs given formatted instructions. Returns final register map.
+  Runs given formatted instructions. Returns final register and memory maps.
   """
   def run_instructions({instrs, size}, {regs, mem}) do
-    # recursive anonymous closure
+    # define recursive anonymous closure
     exec = fn
       {regs, mem}, index, _ when index >= size -> {regs, mem}   # reached end of instructions -> return register & memory maps
       {regs, mem}, index, exec -> case elem(instrs, index) do
@@ -28,7 +28,7 @@ defmodule Mips do
         _ -> "ERROR: Undefined Instruction"
       end
     end
-
+    # run closure
     exec.({regs, mem}, 0, exec)
   end
 
